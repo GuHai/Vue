@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <button @click="jsonpData">axios跨域获取数据</button>
     <ul>
       <li>
         <a
@@ -89,6 +90,18 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    jsonpData: function () {
+      var url = '/insert' // 这里就是刚才的config/index.js中的/api
+      this.$axios.get(url)
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }
